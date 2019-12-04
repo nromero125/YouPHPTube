@@ -15,9 +15,9 @@ RUN apt-get update && \
     a2enmod rewrite
 
 # patch to use non-root port
-#RUN sed -i "s|Listen 80|Listen 8000|g" /etc/apache2/ports.conf && \
-#    sed -i "s|:80|:8000|g" /etc/apache2/sites-available/* && \
-RUN echo "post_max_size = 10240M\nupload_max_filesize = 10240M" >> /usr/local/etc/php/php.ini
+RUN sed -i "s|Listen 80|Listen 8000|g" /etc/apache2/ports.conf && \
+    sed -i "s|:80|:8000|g" /etc/apache2/sites-available/* && \
+    echo "post_max_size = 10240M\nupload_max_filesize = 10240M" >> /usr/local/etc/php/php.ini
 
 RUN pip install -U youtube-dl
 
